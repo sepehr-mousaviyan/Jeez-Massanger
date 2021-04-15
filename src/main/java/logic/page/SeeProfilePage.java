@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class SeeProfilePage extends Page {
+
     private User profileWatcher;
     private User profileOwner;
     private static final Logger logger = LogManager.getLogger(SeeProfilePage.class);
