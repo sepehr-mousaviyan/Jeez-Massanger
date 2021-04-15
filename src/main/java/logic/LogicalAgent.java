@@ -30,7 +30,7 @@ public class LogicalAgent {
         path = path + "/modelBase.json";
         File file = new File(path);
         if (!file.exists()) {
-            logger.info("ModelBase loaded.");
+            logger.info("ModelBase loaded successfully.");
             return new ModelBase();
         }
         else {
@@ -38,14 +38,14 @@ public class LogicalAgent {
                 FileReader fileReader = new FileReader(file);
                 Gson gson = new Gson();
                 ModelBase modelBase1 = gson.fromJson(fileReader, ModelBase.class);
-                for (Tweet tweet : modelBase1.getTweets()) {
+                for(Tweet tweet : modelBase1.getTweets()) {
                     modelBase1.addText(tweet);
                 }
                 fileReader.close();
-                logger.info("ModelBase loaded.");
+                logger.info("ModelBase loaded successfully.");
                 return modelBase1;
             }
-            catch (Exception e) {
+            catch(Exception e) {
                 logger.fatal("Problem with loading modelBase.", e);
             }
         }

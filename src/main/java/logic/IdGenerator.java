@@ -20,6 +20,7 @@ public class IdGenerator {
             Scanner scanner = new Scanner(file);
             cur = scanner.nextInt();
             scanner.close();
+            logger.info("An ID have been generated.");
         }
         catch (Exception e) {
             logger.fatal("Problem with opening the file", e);
