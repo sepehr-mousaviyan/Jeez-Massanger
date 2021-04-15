@@ -143,7 +143,8 @@ public class ModelBase {
         if (!file.exists()) {
             try {
                 file.createNewFile();
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 logger.fatal("Problem in creating file.", e);
             }
         }
@@ -151,7 +152,8 @@ public class ModelBase {
             PrintStream printStream = new PrintStream(new FileOutputStream(file, false));
             printStream.flush();
             printStream.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             logger.fatal("Problem in writing in file.", e);
         }
         try {
@@ -161,7 +163,8 @@ public class ModelBase {
             fileWriter.flush();
             fileWriter.close();
             logger.info("ModelBase saved successfully.");
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             logger.fatal("Problem in saving modelBase", e);
         }
     }

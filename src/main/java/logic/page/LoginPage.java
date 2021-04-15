@@ -77,6 +77,7 @@ public class LoginPage extends Page {
 
     @Override
     public void signIn() {
+
         cli.print("Please enter your username:");
         String nickname = "";
         while (true) {

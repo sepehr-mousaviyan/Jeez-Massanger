@@ -32,7 +32,8 @@ public class LogicalAgent {
         if (!file.exists()) {
             logger.info("ModelBase loaded.");
             return new ModelBase();
-        } else {
+        }
+        else {
             try {
                 FileReader fileReader = new FileReader(file);
                 Gson gson = new Gson();

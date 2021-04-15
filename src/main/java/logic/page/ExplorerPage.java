@@ -36,7 +36,7 @@ public class ExplorerPage extends Page {
 
     @Override
     public void findUser() {
-        cli.print("Enter a user's nickname to see his/her profile:");
+        cli.print("Enter a user's username to see his/her profile:");
         String username = cli.inputString();
         if (!modelBase.ifUserNameExists(username)) {
             logger.info("User not found.");
