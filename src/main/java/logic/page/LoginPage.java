@@ -35,9 +35,9 @@ public class LoginPage extends Page {
         String familyName = cli.inputString();
         cli.print("Pick your username:");
         String nickName = "";
-        while (true) {
+        while(true) {
             nickName = cli.inputString();
-            if (!modelBase.ifUserNameExists(nickName)) {
+            if(!modelBase.ifUserNameExists(nickName)) {
                 break;
             }
             else {
@@ -61,8 +61,8 @@ public class LoginPage extends Page {
         String birthday = cli.inputString();
         cli.print("Enter your Phonenumber(optional: type none or your phonenumber):");
         String phonenumber = cli.inputString();
-        if (!phonenumber.equals("none")) {
-            while (modelBase.ifPhonenumberExists(phonenumber)) {
+        if(!phonenumber.equals("none")) {
+            while(modelBase.ifPhonenumberExists(phonenumber)) {
                 cli.print("Phonenumber already exists please enter another one:");
                 phonenumber = cli.inputString();
             }
@@ -80,9 +80,9 @@ public class LoginPage extends Page {
 
         cli.print("Please enter your username:");
         String nickname = "";
-        while (true) {
+        while(true) {
             nickname = cli.inputString();
-            if (!modelBase.ifUserNameExists(nickname)) {
+            if(!modelBase.ifUserNameExists(nickname)) {
                 cli.print("We can not find this username please enter another one:");
             }
             else {
@@ -92,9 +92,9 @@ public class LoginPage extends Page {
         User user = modelBase.getUserByUsername(nickname);
         cli.print("Enter your password:");
         String password = "";
-        while (true) {
+        while(true) {
             password = HashGenerator.generate(cli.inputString());
-            if (password.equals(user.getPassword())) {
+            if(password.equals(user.getPassword())) {
                 break;
             }
             else {

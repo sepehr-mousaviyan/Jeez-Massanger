@@ -41,7 +41,7 @@ public class SeeProfilePage extends Page {
         cli.print("Familyname: " + profileOwner.getFamilyName());
         cli.print("Nickname: " + profileOwner.getUsername());
         cli.print(profileOwner.showLastSeen(profileWatcher.getId()));
-        if (profileOwner.ifInFollowers(profileWatcher.getId())) {
+        if(profileOwner.ifInFollowers(profileWatcher.getId())) {
             cli.print("You've already followed " + profileOwner.getUsername() + ".");
         }
 
@@ -52,17 +52,18 @@ public class SeeProfilePage extends Page {
 
     @Override
     public void follow() {
-        if (profileOwner.ifInFollowers(profileWatcher.getId())) {
+        if(profileOwner.ifInFollowers(profileWatcher.getId())) {
             cli.print("You've already followed " + profileOwner.getUsername());
             return;
         }
-        if (!profileOwner.isPrivate()) {
+        if(!profileOwner.isPrivate()) {
             profileOwner.addFollower(profileWatcher.getId());
             profileWatcher.addFollowing(profileOwner.getId());
             cli.print("You followed " + profileOwner.getUsername() + " successfully.");
             profileOwner.addSystemMessage(profileWatcher.getUsername() + " started to follow you.");
             logger.info(profileWatcher.getUsername() + " followed " + profileOwner.getUsername());
-        } else {
+        }
+        else {
             profileOwner.addFollowRequest(profileWatcher.getId());
             cli.print("Your follow request has been received successfully.");
             profileWatcher.addPendingId(profileOwner.getId());
@@ -72,7 +73,7 @@ public class SeeProfilePage extends Page {
 
     @Override
     public void unfollow() {
-        if (!profileOwner.ifInFollowers(profileWatcher.getId())) {
+        if(!profileOwner.ifInFollowers(profileWatcher.getId())) {
             cli.print("You are not following " + profileOwner.getUsername() + ".");
             return;
         }

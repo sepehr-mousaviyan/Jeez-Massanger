@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class Cli {
     Scanner scanner;
 
-    Cli() { scanner = new Scanner(System.in); }
+    Cli() {
+        scanner = new Scanner(System.in);
+    }
 
     public String inputString() {
         return scanner.nextLine();

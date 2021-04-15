@@ -38,7 +38,7 @@ public class ExplorerPage extends Page {
     public void findUser() {
         cli.print("Enter a user's username to see his/her profile:");
         String username = cli.inputString();
-        if (!modelBase.ifUserNameExists(username)) {
+        if(!modelBase.ifUserNameExists(username)) {
             logger.info("User not found.");
             cli.print("User not found.");
             return;
@@ -50,22 +50,22 @@ public class ExplorerPage extends Page {
 
     @Override
     public void seeTweets() {
-        if (modelBase.getTweets().size() == 0) {
+        if(modelBase.getTweets().size() == 0) {
             cli.print("No tweets found.");
             return;
         }
         ArrayList<Tweet> prelimTweets = new ArrayList<>();
-        for (Tweet tweet : modelBase.getTweets()) {
-            if (tweet.canBeShown(user, modelBase)) {
+        for(Tweet tweet : modelBase.getTweets()) {
+            if(tweet.canBeShown(user, modelBase)) {
                 prelimTweets.add(tweet);
             }
         }
-        if (prelimTweets.size() == 0) {
+        if(prelimTweets.size() == 0) {
             cli.print("No tweets to be shown.");
             return;
         }
         ArrayList<Tweet> finalTweets = new ArrayList<>();
-        for (int i = 0; i < prelimTweets.size(); i += 3) {
+        for(int i = 0; i < prelimTweets.size(); i += 3) {
             finalTweets.add(prelimTweets.get(i));
         }
         TweetShowPage tweetShowPage = new TweetShowPage(cli, modelBase, pageHandler, user, finalTweets);

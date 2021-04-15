@@ -58,7 +58,7 @@ public class TweetShowPage extends Page {
 
     @Override
     public void next() {
-        if (this.index != this.tweets.size() - 1) {
+        if(this.index != this.tweets.size() - 1) {
             index++;
             cli.print("You are now in the next tweet.");
         }
@@ -69,7 +69,7 @@ public class TweetShowPage extends Page {
 
     @Override
     public void prev() {
-        if (this.index != 0) {
+        if(this.index != 0) {
             index--;
             cli.print("You are now in the previous tweet.");
         }
@@ -94,7 +94,7 @@ public class TweetShowPage extends Page {
     @Override
     public void block() {
         User blockUser = this.getTweet().getAuthor(modelBase);
-        if (user.ifInBlacklist(blockUser.getId())) {
+        if(user.ifInBlacklist(blockUser.getId())) {
             cli.print("You have already blocked " + blockUser.getUsername());
         }
         else {
@@ -138,7 +138,7 @@ public class TweetShowPage extends Page {
 
     @Override
     public void like() {
-        if (this.getTweet().ifLiked(user.getId())) {
+        if(this.getTweet().ifLiked(user.getId())) {
             cli.print("You liked this already.");
         }
         else {
@@ -150,12 +150,12 @@ public class TweetShowPage extends Page {
     @Override
     public void seeComments() {
         ArrayList<Tweet> commentsToShow = new ArrayList<>();
-        for (Tweet tweet : this.getTweet().getComments(modelBase)) {
-            if (tweet.canBeShown(user, modelBase)) {
+        for(Tweet tweet : this.getTweet().getComments(modelBase)) {
+            if(tweet.canBeShown(user, modelBase)) {
                 commentsToShow.add(tweet);
             }
         }
-        if (commentsToShow.size() == 0) {
+        if(commentsToShow.size() == 0) {
             cli.print("No comments to show.");
             return;
         }

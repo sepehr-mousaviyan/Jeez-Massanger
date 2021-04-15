@@ -42,12 +42,12 @@ public class SettingPage extends Page {
         String answer = "";
         while (true) {
             answer = cli.inputString();
-            if (answer.equals("private")) {
+            if(answer.equals("private")) {
                 user.setPrivate(true);
                 cli.print("Your account is private now.");
                 return;
             }
-            if (answer.equals("public")) {
+            if(answer.equals("public")) {
                 user.setPrivate(false);
                 cli.print("Your account is public now.");
                 return;
@@ -62,14 +62,14 @@ public class SettingPage extends Page {
     public void setActivity() {
         cli.print("Do you want your account to be activated or deactivated(type activated or deactivated:");
         String answer = "";
-        while (true) {
+        while(true) {
             answer = cli.inputString();
-            if (answer.equals("activated")) {
+            if(answer.equals("activated")) {
                 user.setActive(true);
                 cli.print("Your account is activated now.");
                 return;
             }
-            if (answer.equals("deactivated")) {
+            if(answer.equals("deactivated")) {
                 user.setActive(false);
                 cli.print("Your account is deactivated now.");
                 return;
@@ -97,17 +97,17 @@ public class SettingPage extends Page {
     public void setLastSeen() {
         cli.print("How do you want your last seen to be(type all or noOne or onlyFollowings:");
         String answer = "";
-        while (true) {
+        while(true) {
             answer = cli.inputString();
-            if (answer.equals("all")) {
+            if(answer.equals("all")) {
                 user.setLastSeenStyle(2);
                 return;
             }
-            if (answer.equals("noOne")) {
+            if(answer.equals("noOne")) {
                 user.setLastSeenStyle(0);
                 return;
             }
-            if (answer.equals("onlyFollowings")) {
+            if(answer.equals("onlyFollowings")) {
                 user.setLastSeenStyle(1);
                 return;
             }
@@ -116,7 +116,7 @@ public class SettingPage extends Page {
 
     @Override
     public void delete() {
-        for (User user1 : modelBase.getUsers()) {
+        for(User user1 : modelBase.getUsers()) {
             user1.removeFromFollowings(user.getId());
             user1.removeFromFollowers(user.getId());
             user1.removeFromBlacklist(user.getId());
@@ -125,12 +125,12 @@ public class SettingPage extends Page {
             user1.removeFromAcceptedIds(user.getId());
             user1.removeFromRejectedIds(user.getId());
         }
-        for (Tweet tweet : modelBase.getTweets()) {
-            if (tweet.isRelatedToUser(user.getId(), modelBase)) {
-                for (User user1 : modelBase.getUsers()) {
+        for(Tweet tweet : modelBase.getTweets()) {
+            if(tweet.isRelatedToUser(user.getId(), modelBase)) {
+                for(User user1 : modelBase.getUsers()) {
                     user1.removeTweet(tweet.getId());
                 }
-                for (Tweet tweet1 : modelBase.getTweets()) {
+                for(Tweet tweet1 : modelBase.getTweets()) {
                     tweet1.removeTweetId(tweet.getId());
                 }
                 modelBase.removeText(tweet);
